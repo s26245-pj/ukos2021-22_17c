@@ -1,0 +1,25 @@
+1. * ścieżka względna - cd ../../../kot/ma/ale
+   * ścieżka bezwględna - cd /tmp/ukos/kot/ma/ale
+
+2. * mkdir -p /tmp/ukos/kot/ma/ale/jan/kowalski
+
+3. * mv ../../../kot/ma/ale /tmp/ukos/ala/i/
+
+4. * kill -SIGKILL pid
+   * kill -kill pid
+
+5. * ls | grep ^al
+
+6. * chmod 751 /tmp/ukos/ala
+   * chmod u=rwx,g=rx,o=x /tmp/ukos/ala
+
+7. * ls -p | grep -v / > list_of_files.txt
+
+8. * Zostały mi odebrane prawa write
+   * brak miejsca na dysku profilu, na 
+
+9. * klawiszem "tab"
+
+10. * uruchomić program ze znakiem '&' na końcu, od razu uruchomi się działając w tle.
+    * uruchomić program, wcisnąć kombinacje klawiszy ctrl + z,by go zatrzymać
+      a następnie poleceniem bg ponownie go uruchomić, ale w tle.
