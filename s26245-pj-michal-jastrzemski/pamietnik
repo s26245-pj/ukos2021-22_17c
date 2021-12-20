@@ -1,14 +1,53 @@
-2021-10-09
+//2021-10-09
 W dniu dzisiejszym nauczyłem się:
 -Do czego służą katalogi w glównym systemie linux i gdzie są przechowywane pliki
 -Jak stworzyć i odpalić wirtualna maszynę
 -Jak tworzyc katalogi i pliki w wirtualnej maszynie oraz jak pushnąc je na github
 -Kilku komend, które mogę wykorzystać w terminalu na linuxie 
-2021-10-23
+
+//21-10-23
 W dniu dzisiejszym :
 -Poznałem komendę chmod
 -Nauczyłem się jak zmieniać uprawnienia do plików i katalogów w systemie linux
 -Dowiedziałem się jakie uprawnienia opisują dane oznaczenia, oraz w jaki sposób sprawdzić uprawnienia do plików
  i katalogów
 -Poznałem listę użytkowników linuxa
--
+
+//2021-11-06
+Pamiętniczku, na dzisiejszych zajęciach ...
+-Poznałem komendę chgrp, za pomocą której mogę zmieniać grupę pliku, bądź katalogu,
+ ponadto dowiedziałem się jak zmienić grupę (komenda newgrp), i w jakich sytuacjach może być 
+ przydatna 
+-Dowiedziałem się co można uzyskać, za pomocą komendy chown
+-Poznałem znaki umożliwiające przekierowanie strumieni
+-Nauczyłem się jak filtrować output komendą grep, oraz jak ściągać strony internetowe, lub pliki ze  stron internetowych komendą wget
+-Poznałem listę sygnałów, dowiedziałem się jak, kiedy i po co mogę wysłać sygnał komendą kill, lub
+ killall
+-Nauczyłem się również uruchamiać program w tle, lub przenieść go do działania w tło po zatrzymaniu  go, oraz jak sprawdzić listę działających procesów. 
+
+
+//2021-11-20
+ Na dzisiejszych zajęciach odbyło się powtórzenie zagadnień przed kolokwium, które odbędzie się na
+ kolejnym zjeździe. Powtórzenie zdecydowanie odświeżyło mi dotychczas przyswojoną wiedzę, i podobała mi się forma 10 powtórzeniowych zadań.
+
+//2021-12-04
+ Dzisiaj odbyło się kolokwium, przed którym się nieco stresowałem, a które ostatecznie nie wyszło 
+ najgorzej. Moim zdaniem kolokwium było nieco pochwytliwe, aczkolwiek dokładnie sprawdzające naszą
+ wiedzę, także nie mam żadnych zastrzeżeń. 
+
+ Zajęcia, które do tej pory się odbyły pozwalają mi w tej chwilii dość swobodnie poruszać się po
+ konsoli w linuxie, myślę że jak na tak małą ilość zajęć w takiej formie nauczyłem się naprawdę
+ sporo, ponieważ po pierwszych uruchomieniach konsoli w linuxie czułem się jak dziecko we mgle,
+ na tę chwilę czuję się zdecydowanie pewniej poruszając się po niej, choc wiem, że przede mną 
+ jeszcze bardzo duzo nauki, z zajęć i formy przekazywanej na nich wiedzy jestem jak najbardziej
+ zadowolony.
+
+//2021-18-12
+ Pamiętniczku, w dniu dzisiejszym rozpoczynamy przygodę z powershellem na windowsie.
+ Do tej pory dowiedziałem sie jak ustawić executionpolicy, w taki sposób abym mógł uruchamiać
+ skrypty w powershellu, oraz co znaczą określone ustawienia. Poznałem konwencję nazewniczą
+ komend w PS, która jest dość intuicyjna, oraz dowiedziałem się, że część komend funkcjonujących
+ w linuxie działa w PS, poniewaz są aliasami do rzeczywistych komend PS. Nauczyłem się korzystać
+ z komend zwracających listę/kolekcję, oraz jak je filtrować, czy zapisać do pliku, lub wypisać
+ je w nowo otwartym okienku graficznym. 
+
