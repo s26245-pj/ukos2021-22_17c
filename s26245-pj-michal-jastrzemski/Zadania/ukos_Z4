@@ -7,8 +7,9 @@
 
 4. * kill -SIGKILL pid
    * kill -kill pid
+   * kill -9 pid
 
-5. * ls | grep ^al
+5. * ls -p |grep -v / | grep -e ^al
 
 6. * chmod 751 /tmp/ukos/ala
    * chmod u=rwx,g=rx,o=x /tmp/ukos/ala
@@ -22,4 +23,4 @@
 
 10. * uruchomić program ze znakiem '&' na końcu, od razu uruchomi się działając w tle.
     * uruchomić program, wcisnąć kombinacje klawiszy ctrl + z,by go zatrzymać
-      a następnie poleceniem bg ponownie go uruchomić, ale w tle.
+      a następnie poleceniem bg wznowić jego pracę.
