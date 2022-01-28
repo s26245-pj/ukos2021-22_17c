@@ -1,0 +1,155 @@
+///WPROWADZENIE DO PODSTAW POWERSHELL-a///
+
+*/W konsoli jako administrator 
+  C:\Users\hp> Set-ExecutionPlicy Bypass
+
+*/Konsola bez uprawnień administratora
+
+C:\Users\HP> Get-Help Get-ExecutionPolicy -Examples
+
+//*Komenda nie zadziałała, także otworzyłem Powershell-a ponownie jako   
+administrator, aby wywołać komendę Update-Help, która bez uruchomienia
+ps jako admin nie zadziałała, po zakończonym procesie polecenia,
+wracam do konsoli bez uprawnień administratora
+
+C:\Users\HP> Get-Help Get-ExecutionPolicy
+
+//*Polecenie wyświetla pomoc związaną z poleceniem Get-ExecutionPolicy
+
+PS C:\Users\HP> Get-Help Get-ExecutionPolicy -Examples
+
+//*Polecenie wyświetliło przykłady użycia polecenia Get-ExecutionPolicy
+
+PS C:\Users\HP> Get-Module -ListAvailable
+
+//*Polecenie zwróciło listę dostępnych w danej chwilii modułów 
+
+PS C:\Users\HP> Get-Module -ListAvailable | ? {$_.Version -ge "2.0.0.0"}
+
+//*Polecenie zwróciło tylko te moduły, których wersja jest >= 2.0.0.0
+
+PS C:\Users\HP> Get-Module -ListAvailable | ? {$_.Version -ge "2.0.0.0"} | % {Get-Command -Module $_.Name}
+
+//*Zwróciło wszystkie cdmlet, w dostępnych modułach, których wersja jest >= 2.0.0.0
+
+PS C:\Users\HP> Get-Module -ListAvailable | ? {$_.Version -ge "2.0.0.0"} | % {Get-Command -Module $_.Name} | ? {($_.Name -like "Add-*") -or ($_.Name -like "Get-*")}
+
+
+//*Sprecyzowało powyższą listę, do poleceń które mają w swojej nazwie "Get-", lub "Add-"
+
+PS C:\Users\HP> Get-Module -ListAvailable | ? {$_.Version -ge "2.0.0.0"} | % {Get-Command -Module $_.Name} | ? {($_.Name -like "Add-*") -or ($_.Name -like "Get-*")} | Out-GridView
+
+//*Wyświetliło powyższą listę, w postaci tabelki graficznej, otwartej w nowym oknie
+
+
+PS C:\Users\HP>  Get-Module -ListAvailable | ? {$_.Version -ge "2.0.0.0"} | % {Get-Command -Module $_.Name} | ? {($_.Name -like "Add-*") -or ($_.Name -like "Get-*")} | Out-File $env:Temp\"Lista.txt"
+
+//*Zapisało powyższą listę, w pliku o nazwie "Lista.txt" w folderze temp.
+
+PS C:\Users\HP> Get-Module -ListAvailable | ? {$_.Version -ge "2.0.0.0"} | % {Get-Command -Module $_.Name} | ? {($_.Name -like "Add-*") -or ($_.Name -like "Get-*")} | Out-Null
+
+
+//*Polecenie się przetworzyło, ale nic nie wypisało.
+
+PS C:\Users\HP> Get-Command -Module BitsTransfer
+
+//*Wylistowało wszystkie komendy w powyższym module.
+
+
+PS C:\Users\HP> Get-Credential 
+
+UserName                                 Password
+--------                                 --------
+s26245@pjwstk.edu.pl System.Security.SecureString
+
+//*Zapisałem swoje dane logowania
+
+PS C:\Users\HP>Start-BitsTransfer -Source http://szuflandia.pjwstk.edu.pl/pub/repo/java/lubuntu_13_04_v02.zip -Destination C:\ -Credential $cred -Authentication Negotiate
+
+//*Rozpocząłem pobieranie wirtualnej maszyny, które zablokowało konsolę, dlatego otworzyłem powershella w drugim oknie, by wywołać komendę 
+Get-BitsTransfer, która wyświetliła mi stan transferu.
+
+PS C:\WINDOWS\system32> Measure-Command {Get-ChildItem -Path C:\Windows}
+
+//*Zmierzyłem czas wykonywania polecenia, nastepnie sprawdziłem aliasy
+
+PS C:\WINDOWS\system32> Get-Alias | ? {$_.Definition -like "Get-ChildItem"}
+PS C:\WINDOWS\system32> ls C:\ | %{Sleep -Milliseconds 250; return $_} | Format-Table
+
+//*Wylistowałem wszystkie pliki i katalogi z katalogu głównego z odstepem czasowym
+
+PS C:\WINDOWS\system32> & C:\Windows\notepad.exe
+
+//*Otworzyłem notatnik dzięki operatorowi '&'
+
+PS C:\WINDOWS\system32> Get-PSDrive
+
+//*Wylistowało "dyski" dostępne w powershellu
+
+//*Dostałem się do rejestru
+PS HKLM:\> cd .\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall
+PS HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall> ls
+
+//*Wylistowało bardzo dużo treści
+
+PS HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall> ls | %{Get-ItemProperty $_.pspath | Select-Object DisplayName, InstallDate, UninstallString} | Format-Table -AutoSize
+
+////WMI
+
+PS C:\WINDOWS\system32> Get-WmiObject -Class Win32_Product | Format-Table -AutoSize
+
+PS C:\WINDOWS\system32> Get-WmiObject -Class Win32_Product | ?{$_.Vendor.toLower() -like "*microsoft*"} | Select-Object Name, Vendor | Format-Table -AutoSize
+
+Name                                                           Vendor
+----                                                           ------
+Office 16 Click-to-Run Extensibility Component                 Microsoft Corporation
+Office 16 Click-to-Run Localization Component                  Microsoft Corporation
+Office 16 Click-to-Run Licensing Component                     Microsoft Corporation
+Microsoft Visual C++ 2015 x86 Minimum Runtime - 14.0.24212     Microsoft Corporation
+Microsoft Visual C++ 2013 x86 Minimum Runtime - 12.0.21005     Microsoft Corporation
+Microsoft Visual C++ 2013 x86 Additional Runtime - 12.0.21005  Microsoft Corporation
+Microsoft Visual C++ 2019 X64 Additional Runtime - 14.25.28508 Microsoft Corporation
+Microsoft Visual C++ 2015 x86 Additional Runtime - 14.0.24212  Microsoft Corporation
+Sprawdzanie kondycji komputera z systemem Windows              Microsoft Corporation
+Microsoft Visual C++ 2013 x64 Additional Runtime - 12.0.21005  Microsoft Corporation
+Microsoft Visual C++ 2013 x64 Minimum Runtime - 12.0.21005     Microsoft Corporation
+Microsoft Visual C++ 2019 X64 Minimum Runtime - 14.25.28508    Microsoft Corporation
+Microsoft Update Health Tools                                  Microsoft Corporation
+You cannot call a method on a null-valued expression.
+At line:1 char:40
++ ... ass Win32_Product | ?{$_.Vendor.toLower() -like "*microsoft*"} | Sele ...
++                           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (:) [], RuntimeException
+    + FullyQualifiedErrorId : InvokeMethodOnNull
+Teams Machine-Wide Installer                                   Microsoft Corporation
+Update for Windows 10 for x64-based Systems (KB5001716)        Microsoft Corporation
+
+//* Wyrzuciło mi jakiś error
+PS C:\WINDOWS\system32> function GiveMePopup {
+>>     param(
+>>         [Parameter(Mandatory=$true)]
+>>         $Text,
+>>
+>>         [Parameter(Mandatory=$true)]
+>>         $Title,
+>>
+>>         [ValidateSet('None', 'Info', 'Warning', 'Error')]
+>>         $Icon = 'Info',
+>>
+>>         $Timeout = 10000
+>>     )
+>>     [void] [System.Reflection.Assembly]::LoadWithPartialName("System.Windows.Forms")
+>>     $icoPath = Get-Process -id $pid | Select-Object -ExpandProperty Path
+>>     $myNotification = New-Object System.Windows.Forms.NotifyIcon
+>>     $myNotification.Icon = [System.Drawing.Icon]::ExtractAssociatedIcon($icoPath)
+>>     $myNotification.BalloonTipIcon = $Icon
+>>     $myNotification.BalloonTipText = $Text
+>>     $myNotification.BalloonTipTitle = $Title
+>>     $myNotification.Visible = $True
+>>     $myNotification.ShowBalloonTip(1000)
+>> }
+PS C:\WINDOWS\system32> GiveMePopup -Text "Your cat has meowed!" -Title "Cat Error" -Icon Error
+PS C:\WINDOWS\system32> GiveMePopup -Text "Pierwszy wiersz`nDrugi wiersz`nTrzeci wiersz`nCzwarty wiersz" -Title "Długa informacja" -Icon Info
+
+
+
